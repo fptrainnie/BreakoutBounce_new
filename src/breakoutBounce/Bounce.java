@@ -1,5 +1,20 @@
 package breakoutBounce;
 
-public class Bounce {
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
+public class Bounce {
+	private Image image;
+	private int x;
+	private int y;
+	
+	public Bounce(int x, int y) throws SlickException {
+		image = new Image("res/bb.png");
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void draw() {
+		image.draw(x, y);
+	}
 }
