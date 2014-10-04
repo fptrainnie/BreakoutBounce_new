@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 
 public class BreakoutBounce extends BasicGame{
 
+	private Sticky stick;
+	
 	public BreakoutBounce(String title) {
 		super(title);
 		
@@ -15,13 +17,13 @@ public class BreakoutBounce extends BasicGame{
 
 	@Override
 	public void render(GameContainer container, Graphics arg1) throws SlickException {
-		
+		stick.draw();
 		
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		
+		stick = new Sticky(200, 480);
 		
 	}
 
