@@ -4,6 +4,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class BreakoutBounce extends BasicGame{
@@ -30,9 +31,20 @@ public class BreakoutBounce extends BasicGame{
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		// TODO Auto-generated method stub
+		Input input = container.getInput();
+		updateStickMovement(input, delta);
 		
 	}
+	
+	void updateStickMovement(Input input, int delta){
+		if(input.isKeyDown(Input.KEY_LEFT)) {
+			stick.moveLeft();
+		}
+		if(input.isKeyDown(Input.KEY_RIGHT)) {
+			stick.moveRight();
+		}
+	}
+	
 	public static void main(String[] arsg){
 		try{
 			BreakoutBounce game = new BreakoutBounce("B.O.B");

@@ -17,4 +17,16 @@ public class Sticky {
 	public void draw() {
 		image.draw(x, y);
 	}
+	
+	public void moveLeft() {
+		if(x>0) {
+			x--;
+		}
+	}
+	
+	public void moveRight() {
+		if(x<400) {
+			x++;
+		}
+	}
 }
