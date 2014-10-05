@@ -8,8 +8,8 @@ public class Bounce {
 	//private CheckCollision check;
 	
 	private Image image;
-	private float x;
-	private float y;
+	private static float x;
+	private static float y;
 	private float vy;
 	private float vx;
 	
@@ -38,12 +38,19 @@ public class Bounce {
 
 	}
 	
+	public static float getBx(){
+		return x;
+	}
+	public static float getBy(){
+		return y;
+	}
+	
 	public void newMoveDirective (){
 		vy *= -1 ;
 	}
 	
 	public void newMoveLeft (){
-		vx=-1;
+		vx =- 1;
 		vy *= -1 ;
 	}
 	

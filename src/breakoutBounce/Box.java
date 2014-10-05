@@ -20,4 +20,11 @@ public class Box {
 	public void update() {
 		
 	}
+	
+	public boolean isCollide(float bx, float by){
+		if(Math.abs(bx - x) <= 20 && Math.abs(by - y) <= 20){
+			return true;
+		}
+		return false;
+	}
 }

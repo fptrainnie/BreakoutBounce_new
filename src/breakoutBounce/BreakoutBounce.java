@@ -42,11 +42,12 @@ public class BreakoutBounce extends BasicGame{
 
 	@Override
 	public void render(GameContainer container, Graphics arg1) throws SlickException {
-		stick.draw();
-		bounce.draw();
 		for(Box box : boxs){
 			box.render();
 		}
+		stick.draw();
+		bounce.draw();
+		
 	}
 
 	@Override
@@ -72,6 +73,11 @@ public class BreakoutBounce extends BasicGame{
 			box.update();
 		}
 		
+		for(int i=0;i<boxs.size();i++){
+			if(boxs.get(i).isCollide(Bounce.getBx(), Bounce.getBy())){
+				boxs.remove(i);
+			}
+		}
 	}
 	
 	void updateStickMovement(Input input, int delta){
