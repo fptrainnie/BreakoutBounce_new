@@ -58,7 +58,7 @@ public class Bounce {
 		if (x>450) vx*=-1;
 	}
 	
-	public 
+	 
 	
 	
 }
