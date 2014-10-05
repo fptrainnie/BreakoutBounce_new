@@ -12,6 +12,9 @@ public class BreakoutBounce extends BasicGame{
 	private Sticky stick;
 	private Bounce bounce;
 	
+	public static final int GAME_WIDTH = 480;
+	  public static final int GAME_HEIGHT = 640;
+	
 	public BreakoutBounce(String title) {
 		super(title);
 		
@@ -26,14 +29,14 @@ public class BreakoutBounce extends BasicGame{
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		stick = new Sticky(200, 480);
-		bounce = new Bounce(225, 400);
+		bounce = new Bounce(GAME_WIDTH/2-15, GAME_HEIGHT*40/64,10);
 	}
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
 		updateStickMovement(input, delta);
-		
+		bounce.update();
 	}
 	
 	void updateStickMovement(Input input, int delta){
@@ -49,7 +52,8 @@ public class BreakoutBounce extends BasicGame{
 		try{
 			BreakoutBounce game = new BreakoutBounce("B.O.B");
 			AppGameContainer appgc = new AppGameContainer(game);
-			appgc.setDisplayMode(480, 640, false);
+			appgc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
+			appgc.setMinimumLogicUpdateInterval(1000 / 60);
 			appgc.start();
 		} catch(SlickException e){
 			e.printStackTrace();
