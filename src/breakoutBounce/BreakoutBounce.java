@@ -1,5 +1,7 @@
 package breakoutBounce;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -11,6 +13,7 @@ public class BreakoutBounce extends BasicGame{
 
 	private Sticky stick;
 	private Bounce bounce;
+	private ArrayList<Box> boxs = new ArrayList<Box>();
 	
 	public static final int GAME_WIDTH = 480;
 	  public static final int GAME_HEIGHT = 640;
@@ -23,19 +26,15 @@ public class BreakoutBounce extends BasicGame{
 					System.out.println("SSSSS");
 					bounce.newMoveDirective();
 				}
-				else if (bounce.getX()+15 < stick.getX()+ 40){
+				else if ( bounce.getX()+15 < stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
 					bounce.newMoveLeft();
 				}
-				
-			}
-			else if(bounce.getX() > 40+stick.getX()) {
-				
-			}
-			else {
-				
-			}
+				else if (bounce.getX()+15 > stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveRight();
+				}
 		}
-	
+	  }
+	  
 	public BreakoutBounce(String title) {
 		super(title);
 		
@@ -45,12 +44,20 @@ public class BreakoutBounce extends BasicGame{
 	public void render(GameContainer container, Graphics arg1) throws SlickException {
 		stick.draw();
 		bounce.draw();
+		for(Box box : boxs){
+			box.render();
+		}
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		stick = new Sticky(200, 480);
-		bounce = new Bounce(GAME_WIDTH/2-15, GAME_HEIGHT*40/64, 0, 1);
+		bounce = new Bounce(GAME_WIDTH/2-15, GAME_HEIGHT*40/64, 0,2);
+		for(int i=0;i<24;i++){
+			for(int j=0;j<7;j++){
+				boxs.add(new Box(i*40,j*40));
+			}
+		}
 	}
 	
 
@@ -60,8 +67,10 @@ public class BreakoutBounce extends BasicGame{
 		updateStickMovement(input, delta);
 		bounce.update();
 		stick();
-		//bounce.collision_bnc();
 		
+		for(Box box : boxs){
+			box.update();
+		}
 		
 	}
 	

@@ -34,7 +34,8 @@ public class Bounce {
 	public void update() {
 		y += vy;
 		x+= vx;
-		//vy -= 0.1;
+		checkBlock();
+
 	}
 	
 	public void newMoveDirective (){
@@ -42,11 +43,22 @@ public class Bounce {
 	}
 	
 	public void newMoveLeft (){
-		
+		vx=-1;
+		vy *= -1 ;
 	}
 	
+	public void newMoveRight (){
+		vx=1;
+		vy *= -1 ;
+	}
 	
+	public void checkBlock(){
+		if (y<0) vy*=-1; 
+		if (x<0) vx*=-1;
+		if (x>450) vx*=-1;
+	}
 	
+	public 
 	
 	
 }

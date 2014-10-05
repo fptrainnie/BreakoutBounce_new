@@ -35,7 +35,6 @@ public class Sticky {
 	public void getstick(float x_bounce) {
 		System.out.println("C");
 		float x_stick = this.x;
-		//check.stick(x_bounce, x_stick);
 	}
 	public float getX(){
 		return this.x ;
