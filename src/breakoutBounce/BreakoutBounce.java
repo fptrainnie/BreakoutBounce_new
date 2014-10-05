@@ -14,6 +14,27 @@ public class BreakoutBounce extends BasicGame{
 	
 	public static final int GAME_WIDTH = 480;
 	  public static final int GAME_HEIGHT = 640;
+	  
+	  public void stick() {
+		
+			if(bounce.getY() == 450 ) {
+				
+				if (bounce.getX()+15 == stick.getX()+ 40){
+					System.out.println("SSSSS");
+					bounce.newMoveDirective();
+				}
+				else if (bounce.getX()+15 < stick.getX()+ 40){
+					bounce.newMoveLeft();
+				}
+				
+			}
+			else if(bounce.getX() > 40+stick.getX()) {
+				
+			}
+			else {
+				
+			}
+		}
 	
 	public BreakoutBounce(String title) {
 		super(title);
@@ -29,14 +50,19 @@ public class BreakoutBounce extends BasicGame{
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		stick = new Sticky(200, 480);
-		bounce = new Bounce(GAME_WIDTH/2-15, GAME_HEIGHT*40/64,10);
+		bounce = new Bounce(GAME_WIDTH/2-15, GAME_HEIGHT*40/64, 0, 1);
 	}
+	
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
 		updateStickMovement(input, delta);
 		bounce.update();
+		stick();
+		//bounce.collision_bnc();
+		
+		
 	}
 	
 	void updateStickMovement(Input input, int delta){

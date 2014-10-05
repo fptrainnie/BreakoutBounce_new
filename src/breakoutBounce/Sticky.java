@@ -8,6 +8,8 @@ public class Sticky {
 	private int x;
 	private int y;
 	
+	//private CheckCollision check;
+	
 	public Sticky(int x, int y) throws SlickException {
 		image = new Image("res/stick.png");
 		this.x = x;
@@ -29,4 +31,17 @@ public class Sticky {
 			x++;
 		}
 	}
+	
+	public void getstick(float x_bounce) {
+		System.out.println("C");
+		float x_stick = this.x;
+		//check.stick(x_bounce, x_stick);
+	}
+	public float getX(){
+		return this.x ;
+	}
+	public float getY(){
+		return this.y ;
+	}
+	
 }
