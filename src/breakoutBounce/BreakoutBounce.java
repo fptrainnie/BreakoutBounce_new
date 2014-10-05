@@ -23,14 +23,19 @@ public class BreakoutBounce extends BasicGame{
 			if(bounce.getY() == 450 ) {
 				
 				if (bounce.getX()+15 == stick.getX()+ 40){
-					System.out.println("SSSSS");
 					bounce.newMoveDirective();
 				}
-				else if ( bounce.getX()+15 < stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
-					bounce.newMoveLeft();
+				else if ( bounce.getX()+15 < stick.getX()+ 30 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveLeft1();
 				}
-				else if (bounce.getX()+15 > stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
-					bounce.newMoveRight();
+				else if ( bounce.getX()+15 < stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveLeft2();
+				}
+				else if ( bounce.getX()+15 > stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveRight1();
+				}
+				else if (bounce.getX()+15 > stick.getX()+ 50 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveRight2();
 				}
 		}
 	  }

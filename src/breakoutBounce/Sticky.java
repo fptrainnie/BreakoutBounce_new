@@ -22,13 +22,13 @@ public class Sticky {
 	
 	public void moveLeft() {
 		if(x>0) {
-			x--;
+			x-=3;
 		}
 	}
 	
 	public void moveRight() {
 		if(x<400) {
-			x++;
+			x+=3;
 		}
 	}
 	

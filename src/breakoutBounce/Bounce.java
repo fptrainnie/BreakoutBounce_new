@@ -33,7 +33,7 @@ public class Bounce {
 
 	public void update() {
 		y += vy;
-		x+= vx;
+		x += vx;
 		checkBlock();
 
 	}
@@ -49,13 +49,22 @@ public class Bounce {
 		vy *= -1 ;
 	}
 	
-	public void newMoveLeft (){
-		vx =- 1;
+	public void newMoveLeft1 (){
+		vx =-2;
 		vy *= -1 ;
 	}
 	
-	public void newMoveRight (){
-		vx=1;
+	public void newMoveLeft2 (){
+		vx =-1;
+		vy *= -1 ;
+	}
+	
+	public void newMoveRight1 (){
+		vx = 1;
+		vy *= -1 ;
+	}	
+	public void newMoveRight2 (){
+		vx = 10;
 		vy *= -1 ;
 	}
 	
