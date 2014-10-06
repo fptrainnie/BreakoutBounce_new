@@ -5,6 +5,7 @@ import org.newdawn.slick.SlickException;
 
 public class Bounce {
 	private Sticky stick;
+	
 	//private CheckCollision check;
 	
 	private Image image;
@@ -46,7 +47,7 @@ public class Bounce {
 	}
 	
 	public void newMoveDirective (){
-		vy *= -1 ;
+		vy *= -5 ;
 	}
 	
 	public void newMoveLeft1 (){

@@ -10,7 +10,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class BreakoutBounce extends BasicGame{
-
+	public boolean GAMEOVER = false;
 	private Sticky stick;
 	private Bounce bounce;
 	private ArrayList<Box> boxs = new ArrayList<Box>();
@@ -60,6 +60,11 @@ public class BreakoutBounce extends BasicGame{
 		stick.draw();
 		bounce.draw();
 		
+		if(GAMEOVER)
+		{
+			g.drawString("GAME OVER", GAME_WIDTH/2-30, GAME_HEIGHT*40/64);
+		}
+		
 		g.drawString("Score : " + score, 370, 620);
 	}
 
@@ -77,19 +82,24 @@ public class BreakoutBounce extends BasicGame{
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		Input input = container.getInput();
-		updateStickMovement(input, delta);
-		bounce.update();
-		stick();
+		if(bounce.getY()==640) 
+			GAMEOVER = true;
 		
-		for(Box box : boxs){
-			box.update();
-		}
+		if(!GAMEOVER){
+			Input input = container.getInput();
+			updateStickMovement(input, delta);
+			bounce.update();
+			stick();
+			
+			for(Box box : boxs){
+				box.update();
+			}
 		
-		for(int i=0;i<boxs.size();i++){
-			if(boxs.get(i).isCollide(Bounce.getBx(), Bounce.getBy())){
-				boxs.remove(i);
-				score++;
+			for(int i=0;i<boxs.size();i++){
+				if(boxs.get(i).isCollide(Bounce.getBx(), Bounce.getBy())){
+					boxs.remove(i);
+					score++;
+				}
 			}
 		}
 	}
