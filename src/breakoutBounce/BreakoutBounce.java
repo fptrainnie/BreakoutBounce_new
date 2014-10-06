@@ -14,6 +14,7 @@ public class BreakoutBounce extends BasicGame{
 	private Sticky stick;
 	private Bounce bounce;
 	private ArrayList<Box> boxs = new ArrayList<Box>();
+	private int score = 0;
 	
 	public static final int GAME_WIDTH = 480;
 	  public static final int GAME_HEIGHT = 640;
@@ -25,17 +26,23 @@ public class BreakoutBounce extends BasicGame{
 				if (bounce.getX()+15 == stick.getX()+ 40){
 					bounce.newMoveDirective();
 				}
-				else if ( bounce.getX()+15 < stick.getX()+ 30 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+				else if ( bounce.getX()+15 < stick.getX()+ 20 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
 					bounce.newMoveLeft1();
 				}
-				else if ( bounce.getX()+15 < stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+				else if ( bounce.getX()+15 < stick.getX()+ 30 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
 					bounce.newMoveLeft2();
 				}
-				else if ( bounce.getX()+15 > stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+				else if ( bounce.getX()+15 < stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveLeft3();
+				}
+				else if (bounce.getX()+15 > stick.getX()+ 40 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
 					bounce.newMoveRight1();
 				}
-				else if (bounce.getX()+15 > stick.getX()+ 50 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+				else if (bounce.getX()+15 > stick.getX()+ 30 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
 					bounce.newMoveRight2();
+				}
+				else if (bounce.getX()+15 > stick.getX()+ 20 && (Math.abs(bounce.getX()+15 - (stick.getX()+ 40)) < 40+15 )){
+					bounce.newMoveRight3();
 				}
 		}
 	  }
@@ -46,13 +53,14 @@ public class BreakoutBounce extends BasicGame{
 	}
 
 	@Override
-	public void render(GameContainer container, Graphics arg1) throws SlickException {
+	public void render(GameContainer container, Graphics g) throws SlickException {
 		for(Box box : boxs){
 			box.render();
 		}
 		stick.draw();
 		bounce.draw();
 		
+		g.drawString("Score : " + score, 370, 620);
 	}
 
 	@Override
@@ -81,6 +89,7 @@ public class BreakoutBounce extends BasicGame{
 		for(int i=0;i<boxs.size();i++){
 			if(boxs.get(i).isCollide(Bounce.getBx(), Bounce.getBy())){
 				boxs.remove(i);
+				score++;
 			}
 		}
 	}

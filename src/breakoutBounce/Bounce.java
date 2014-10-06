@@ -50,11 +50,14 @@ public class Bounce {
 	}
 	
 	public void newMoveLeft1 (){
-		vx =-2;
+		vx =-5;
 		vy *= -1 ;
 	}
-	
 	public void newMoveLeft2 (){
+		vx =-3;
+		vy *= -1 ;
+	}
+	public void newMoveLeft3 (){
 		vx =-1;
 		vy *= -1 ;
 	}
@@ -64,7 +67,11 @@ public class Bounce {
 		vy *= -1 ;
 	}	
 	public void newMoveRight2 (){
-		vx = 10;
+		vx = 3;
+		vy *= -1 ;
+	}
+	public void newMoveRight3 (){
+		vx = 5;
 		vy *= -1 ;
 	}
 	
